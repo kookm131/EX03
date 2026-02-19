@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>누렁이의 이메일 전송소</h2>
+    
+    <!-- 성공/에러 메시지 -->
+    <div th:if="${success}" style="color: green;">
+        <p th:text="${success}"></p>
+    </div>
+    <div th:if="${error}" style="color: red;">
+        <p th:text="${error}"></p>
+    </div>
+    
+    <!-- 일반 텍스트 이메일 폼 -->
+    <form action="/send-email" method="post">
+        <h3>텍스트 이메일 보내기</h3>
+        <p>받는 사람: <input type="email" name="to" required/></p>
+        <p>제목: <input type="text" name="subject" required/></p>
+        <p>내용: <textarea name="content" rows="5" cols="50" required></textarea></p>
+        <button type="submit">전송</button>
+    </form>
+    
+    <hr>
+    
+    <!-- HTML 환영 이메일 폼 -->
+    <form action="/send-welcome-email" method="post">
+        <h3>환영 이메일 보내기</h3>
+        <p>받는 사람: <input type="email" name="userEmail" required/></p>
+        <p>사용자 이름: <input type="text" name="userName" required/></p>
+        <button type="submit">환영 이메일 전송</button>
+    </form>
+
+</body>
+</html>
